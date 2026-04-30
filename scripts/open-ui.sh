@@ -7,8 +7,8 @@ PORT=18789
 # Kill any existing tunnel on this port
 lsof -ti tcp:$PORT | xargs kill -9 2>/dev/null
 
-echo "Opening SSH tunnel → single-brain:$PORT"
-ssh -fNL ${PORT}:127.0.0.1:${PORT} single-brain
+echo "Opening SSH tunnel → your-server:$PORT"
+ssh -fNL ${PORT}:127.0.0.1:${PORT} your-server
 
 sleep 1
 echo "Opening http://localhost:$PORT ..."

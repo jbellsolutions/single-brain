@@ -143,7 +143,7 @@ docker compose up -d
 
 From DigitalOcean console (browser-based terminal):
 ```
-https://cloud.digitalocean.com → Droplets → single-brain → Console
+https://cloud.digitalocean.com → Droplets → your-droplet → Console
 ```
 
 ---
