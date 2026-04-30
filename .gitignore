@@ -1,0 +1,37 @@
+# Secrets — never commit
+.env
+*.bak
+*.bak.*
+*.last-good
+*.clobbered.*
+
+# OpenClaw runtime state
+openclaw/config/credentials/
+openclaw/config/agents/main/sessions/
+openclaw/config/plugin-runtime-deps/
+openclaw/config/.openclaw-*
+openclaw/config/tasks/
+openclaw/config/identity/
+openclaw/config/update-check.json
+openclaw/config/telegram/
+openclaw/config/canvas/
+openclaw/workspace/
+
+# OpenClaw source — dependency, not our code
+openclaw/repo/
+
+# Hermes runtime state
+hermes/config/sessions/
+hermes/config/cache/
+
+# Vault runtime (keep structure, not logs/domains)
+vault/daily-logs/
+vault/domains/
+vault/queue/
+
+# Logs
+logs/
+
+# OS
+.DS_Store
+Thumbs.db

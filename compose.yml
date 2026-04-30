@@ -1,0 +1,82 @@
+# Single Brain - OpenClaw + Hermes orchestration (OpenRouter / DeepSeek V4)
+# Gateway port binds to 127.0.0.1 only. SSH-tunnel from Mac to reach the UI.
+
+services:
+  openclaw-gateway:
+    image: ghcr.io/openclaw/openclaw:latest
+    container_name: openclaw-gateway
+    restart: unless-stopped
+    init: true
+    environment:
+      HOME: /home/node
+      TERM: xterm-256color
+      TZ: ${TZ:-America/New_York}
+      OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN:?OPENCLAW_GATEWAY_TOKEN required}
+      OPENCLAW_DISABLE_BONJOUR: "1"
+      # OpenRouter via OpenAI-compatible endpoint (OpenClaw recognizes the slug)
+      OPENROUTER_API_KEY: ${OPENCLAW_OPENROUTER_API_KEY:?OPENCLAW_OPENROUTER_API_KEY required}
+    volumes:
+      - /srv/single-brain/openclaw/config:/home/node/.openclaw
+      - /srv/single-brain/openclaw/workspace:/home/node/.openclaw/workspace
+      - /srv/single-brain/vault:/vault
+      - /srv/single-brain/logs:/logs
+    ports:
+      - "127.0.0.1:18789:18789"
+      - "127.0.0.1:18790:18790"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command:
+      - node
+      - dist/index.js
+      - gateway
+      - --bind
+      - lan
+      - --port
+      - "18789"
+    healthcheck:
+      # curl --max-time prevents hanging during event-loop-blocked channel init.
+      # start_period 420s (7 min) covers Slack Socket Mode cold-connect (~4 min).
+      # retries 3 at 30s intervals = 90s of real failure before unhealthy.
+      test: ["CMD-SHELL", "curl -s --max-time 10 http://127.0.0.1:18789/__openclaw__/canvas/ -o /dev/null -w '%{http_code}' | grep -qE '^(200|301|302|401|403)$' || exit 1"]
+      interval: 30s
+      timeout: 15s
+      retries: 3
+      start_period: 420s
+    networks: [agent_net]
+    mem_limit: 2g
+    cpus: "1.5"
+    security_opt: ["no-new-privileges:true"]
+
+  hermes:
+    image: nousresearch/hermes-agent:latest
+    container_name: hermes
+    restart: unless-stopped
+    init: true
+    stdin_open: true
+    tty: true
+    environment:
+      TZ: ${TZ:-America/New_York}
+      OPENROUTER_API_KEY: ${HERMES_OPENROUTER_API_KEY:?HERMES_OPENROUTER_API_KEY required}
+      HERMES_INFERENCE_PROVIDER: openrouter
+      HERMES_INFERENCE_MODEL: deepseek/deepseek-v4-flash
+      HERMES_ACCEPT_HOOKS: "1"
+      HOME: /root
+    volumes:
+      - /srv/single-brain/hermes/config:/root/.hermes
+      - /srv/single-brain/vault:/vault
+      - /srv/single-brain/logs:/logs
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks: [agent_net]
+    depends_on:
+      openclaw-gateway:
+        condition: service_healthy
+    mem_limit: 1g
+    cpus: "0.5"
+    security_opt: ["no-new-privileges:true"]
+    # Run gateway in foreground (the daemon mode for Docker)
+    command: ["/opt/hermes/.venv/bin/hermes", "gateway", "run", "--accept-hooks"]
+
+networks:
+  agent_net:
+    driver: bridge
+    name: single-brain-net

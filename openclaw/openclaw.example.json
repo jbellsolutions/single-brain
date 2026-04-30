@@ -1,0 +1,42 @@
+{
+  "gateway": {
+    "mode": "local",
+    "controlUi": {
+      "allowedOrigins": [
+        "http://localhost:18789",
+        "http://127.0.0.1:18789"
+      ]
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openrouter/deepseek/deepseek-v4-flash"
+      }
+    }
+  },
+  "plugins": {
+    "entries": {
+      "openrouter": {
+        "enabled": true
+      }
+    }
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.4.26"
+  },
+  "channels": {
+    "telegram": {
+      "name": "single-brain",
+      "enabled": true,
+      "botToken": "YOUR_TELEGRAM_BOT_TOKEN"
+    },
+    "slack": {
+      "name": "single-brain",
+      "enabled": true,
+      "botToken": "xoxb-YOUR-BOT-TOKEN",
+      "appToken": "xapp-YOUR-APP-TOKEN",
+      "ackReaction": "eyes"
+    }
+  }
+}
