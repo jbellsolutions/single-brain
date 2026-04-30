@@ -9,9 +9,14 @@
   "slack": {
     "name": "single-brain",
     "enabled": true,
-    "botToken": "xoxb-...",
-    "appToken": "xapp-...",
-    "ackReaction": "eyes"
+    "botToken": "YOUR_SLACK_BOT_TOKEN",
+    "appToken": "YOUR_SLACK_APP_TOKEN",
+    "ackReaction": "eyes",
+    "statusReactions": {
+      "enabled": true,
+      "emojis": { "done": "white_check_mark", "error": "x" }
+    },
+    "healthMonitor": { "enabled": false }
   }
 }
 ```
@@ -21,6 +26,8 @@
 | `botToken` | OAuth bot token (`xoxb-...`). Needs `chat:write`, `im:history`, `reactions:write` |
 | `appToken` | App-level token (`xapp-...`). Socket Mode. Needs `connections:write` |
 | `ackReaction` | Emoji reaction added when message received. `eyes` = 👀 |
+| `statusReactions` | Auto-react with ✅/❌ on task done/error |
+| `healthMonitor` | **Must be `false`** — internal monitor kills the SDK reconnect before it completes, causing pong timeouts |
 
 ### User Allowlist
 
@@ -31,7 +38,7 @@ Approved users are stored in the credentials file (not in `openclaw.json`):
 ```
 
 ```json
-{ "version": 1, "allowFrom": ["U01D077J78S"] }
+{ "version": 1, "allowFrom": ["YOUR_SLACK_USER_ID"] }
 ```
 
 To add a user, edit this file inside the container and restart:
@@ -44,11 +51,11 @@ docker compose restart openclaw-gateway
 
 | | |
 |--|--|
-| Workspace | Bottom Line Marketing Solutions |
-| Team ID | `T01D6BZEGA0` |
-| Bot user | `@single_brain` |
-| Approved users | `U01D077J78S` (Justin) |
-| Socket Mode | Connected |
+| Workspace | `<your-workspace-name>` |
+| Team ID | `<YOUR_SLACK_TEAM_ID>` |
+| Bot user | `<@your_bot_name>` |
+| Approved users | `<YOUR_SLACK_USER_ID>` |
+| Socket Mode | Configure in `openclaw.json` |
 
 ### Reaction Protocol
 
@@ -56,6 +63,7 @@ docker compose restart openclaw-gateway
 |----------|---------|
 | 👀 | Message received, processing |
 | ✅ | Task completed |
+| ❌ | Error |
 | ⚠️ | Completed with warnings |
 | 🚫 | Declined (out of scope or policy) |
 
@@ -70,7 +78,9 @@ docker compose restart openclaw-gateway
   "telegram": {
     "name": "single-brain",
     "enabled": true,
-    "botToken": "XXXXXXXXXX:..."
+    "botToken": "YOUR_TELEGRAM_BOT_TOKEN",
+    "reactionLevel": "extensive",
+    "healthMonitor": { "enabled": false }
   }
 }
 ```
@@ -78,18 +88,20 @@ docker compose restart openclaw-gateway
 | Field | Description |
 |-------|-------------|
 | `botToken` | Bot token from @BotFather |
+| `reactionLevel` | `"extensive"` enables full reaction lifecycle (received → processing → done/error) |
+| `healthMonitor` | **Must be `false`** — same reason as Slack |
 
 ### Current Status
 
 | | |
 |--|--|
-| Bot | `@singlebrain_jb_bot` |
-| Approved user ID | `1264488761` |
-| Status | Active |
+| Bot | `<@your_telegram_bot>` |
+| Approved user ID | `<YOUR_TELEGRAM_USER_ID>` |
+| Status | Configure in `openclaw.json` |
 
 ### To Message
 
-Find `@singlebrain_jb_bot` on Telegram and send a DM directly.
+Find your bot on Telegram and send a DM directly.
 
 ---
 

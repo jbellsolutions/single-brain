@@ -69,7 +69,7 @@ The gateway port is never publicly exposed.
 
 ## Data Flow (Slack message)
 
-1. User DMs `@single_brain` in Slack
+1. User DMs your bot (`@your_bot_name`) in Slack
 2. Slack sends event via Socket Mode to `xapp-...` token
 3. OpenClaw receives event, checks `credentials/slack-default-allowFrom.json`
 4. If user is in allowlist → create/resume session → route to `main` agent

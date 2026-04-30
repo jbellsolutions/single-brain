@@ -1,6 +1,5 @@
 {
   "gateway": {
-    "mode": "local",
     "controlUi": {
       "allowedOrigins": [
         "http://localhost:18789",
@@ -22,21 +21,37 @@
       }
     }
   },
+  "messages": {
+    "statusReactions": {
+      "enabled": true,
+      "emojis": {
+        "done": "white_check_mark",
+        "error": "x"
+      }
+    }
+  },
   "meta": {
     "lastTouchedVersion": "2026.4.26"
   },
   "channels": {
-    "telegram": {
-      "name": "single-brain",
-      "enabled": true,
-      "botToken": "YOUR_TELEGRAM_BOT_TOKEN"
-    },
     "slack": {
       "name": "single-brain",
       "enabled": true,
-      "botToken": "xoxb-YOUR-BOT-TOKEN",
-      "appToken": "xapp-YOUR-APP-TOKEN",
-      "ackReaction": "eyes"
+      "botToken": "YOUR_SLACK_BOT_TOKEN",
+      "appToken": "YOUR_SLACK_APP_TOKEN",
+      "ackReaction": "eyes",
+      "healthMonitor": {
+        "enabled": false
+      }
+    },
+    "telegram": {
+      "name": "single-brain",
+      "enabled": true,
+      "botToken": "YOUR_TELEGRAM_BOT_TOKEN",
+      "reactionLevel": "extensive",
+      "healthMonitor": {
+        "enabled": false
+      }
     }
   }
 }

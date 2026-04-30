@@ -1,11 +1,13 @@
 # Single Brain — OpenClaw + Hermes Agent Stack
 
-Autonomous dual-agent stack running on DigitalOcean. OpenClaw handles Slack/Telegram channels and executes tasks; Hermes orchestrates, self-improves, and writes SOPs. Both share a git-backed vault for memory.
+Autonomous dual-agent stack. OpenClaw handles Slack/Telegram channels and executes tasks; Hermes orchestrates, self-improves, and writes SOPs. Both share a git-backed vault for memory.
+
+> Inspired by [Eric Siu's video](https://www.youtube.com/watch?v=N5L1C1STZkw) — adapted with bug fixes, Composio tooling, and a full recovery runbook.
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
 │                    DigitalOcean VPS                          │
-│                 single-brain (104.236.11.200)                │
+│                 your-vps-hostname                            │
 │                                                              │
 │   ┌─────────────────────┐   ┌──────────────────────────┐    │
 │   │   openclaw-gateway  │   │         hermes           │    │
@@ -36,8 +38,9 @@ Autonomous dual-agent stack running on DigitalOcean. OpenClaw handles Slack/Tele
 | OpenClaw | `ghcr.io/openclaw/openclaw:latest` |
 | Hermes | `nousresearch/hermes-agent:latest` |
 | LLM | OpenRouter → DeepSeek V4 Flash |
-| Channels | Slack (Bottom Line Mktg), Telegram (@singlebrain_jb_bot) |
+| Channels | Slack, Telegram |
 | Vault | Git repo at `/srv/single-brain/vault` |
+| Tooling | Composio (250+ integrations for Hermes) |
 
 ## Cost
 
@@ -63,17 +66,19 @@ Autonomous dual-agent stack running on DigitalOcean. OpenClaw handles Slack/Tele
 │   ├── architecture.md      # Deep-dive architecture
 │   ├── setup.md             # Fresh install guide
 │   ├── channels.md          # Channel config reference
-│   └── recovery.md          # Runbook for common failures
+│   ├── recovery.md          # Runbook for common failures
+│   ├── changelog.md         # Bug fixes and patches log
+│   └── composio.md          # Composio integration guide
 ├── openclaw/
 │   ├── config/              # Mounted → /home/node/.openclaw
-│   │   ├── openclaw.json    # Active OpenClaw config (channels, model, plugins)
-│   │   ├── credentials/     # Pairing approvals (never commit tokens here)
+│   │   ├── openclaw.json    # Active OpenClaw config (channels, model, plugins) — NOT committed
 │   │   └── agents/          # Per-agent sessions and memory
 │   ├── workspace/           # Agent working directory
-│   └── openclaw.example.json  # Redacted config template
+│   └── openclaw.example.json  # Redacted config template — copy to config/openclaw.json
 ├── hermes/
 │   └── config/              # Mounted → /root/.hermes
-├── vault/                   # Shared agent memory (git repo)
+├── vault-skeleton/          # Template vault structure — copy to /srv/single-brain/vault
+├── vault/                   # Shared agent memory (git repo, not committed here)
 │   ├── agents/              # Agent instructions (CLAUDE.md, voice)
 │   ├── sops/                # Standard operating procedures per domain
 │   ├── decisions/           # Append-only decision log
@@ -86,8 +91,8 @@ Autonomous dual-agent stack running on DigitalOcean. OpenClaw handles Slack/Tele
 ## Quick Commands
 
 ```bash
-# SSH in
-ssh single-brain
+# SSH in (requires SSH config alias — see docs/setup.md)
+ssh your-server
 
 # Container status
 cd /srv/single-brain && docker compose ps
@@ -106,7 +111,7 @@ docker compose restart openclaw-gateway
 docker compose pull && docker compose up -d
 
 # Open OpenClaw UI (from Mac — requires SSH tunnel)
-ssh -L 18789:127.0.0.1:18789 single-brain -N &
+ssh -L 18789:127.0.0.1:18789 your-server -N &
 open http://localhost:18789
 
 # Check watchdog log
@@ -119,10 +124,10 @@ docker compose restart openclaw-gateway
 
 ## Channels
 
-| Channel | Status | Bot Name |
-|---------|--------|----------|
-| Slack | ✅ Active | @single_brain (Bottom Line Mktg Solutions) |
-| Telegram | ✅ Active | @singlebrain_jb_bot |
+| Channel | Status | Notes |
+|---------|--------|-------|
+| Slack | Configure in `openclaw.json` | Socket Mode, emoji reactions built-in |
+| Telegram | Configure in `openclaw.json` | Full reaction lifecycle via `reactionLevel: "extensive"` |
 
 ## Always-On (3-layer uptime)
 
@@ -135,22 +140,9 @@ docker compose restart openclaw-gateway
 - Gateway port `18789` binds to `127.0.0.1` only — no public exposure
 - Access UI via SSH tunnel only
 - All secrets in `.env` (never committed)
+- `openclaw/config/openclaw.json` is gitignored (contains live bot tokens)
 - Container `security_opt: no-new-privileges:true`
 - SSH key auth only (password disabled)
-
-## Slack Bot Configuration
-
-- **Workspace**: Bottom Line Marketing Solutions (`T01D6BZEGA0`)
-- **Bot user**: `@single_brain`
-- **Approved DM user**: `U01D077J78S`
-- **Pairing**: Stored in `openclaw/config/credentials/slack-default-allowFrom.json`
-- **Message bot**: DM `@single_brain` directly in Slack
-
-## Telegram Bot Configuration
-
-- **Bot**: `@singlebrain_jb_bot`
-- **Approved user ID**: `1264488761`
-- Message the bot directly on Telegram
 
 ## See Also
 
@@ -158,3 +150,5 @@ docker compose restart openclaw-gateway
 - [Fresh install guide](docs/setup.md)
 - [Channel config reference](docs/channels.md)
 - [Recovery runbook](docs/recovery.md)
+- [Bug fixes & changelog](docs/changelog.md)
+- [Composio integration](docs/composio.md)

@@ -15,6 +15,10 @@ openclaw/config/identity/
 openclaw/config/update-check.json
 openclaw/config/telegram/
 openclaw/config/canvas/
+openclaw/config/openclaw.json
+openclaw/config/exec-approvals.json
+openclaw/config/acpx/
+openclaw/config/delivery-queue/
 openclaw/workspace/
 
 # OpenClaw source — dependency, not our code

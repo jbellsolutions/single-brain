@@ -7,12 +7,29 @@
 - SSH key access as `claw` user (sudo)
 - OpenRouter account with two API keys created
 - Slack app with Socket Mode enabled (bot token `xoxb-...` + app token `xapp-...`)
-- Telegram bot token
+- Telegram bot token (from @BotFather)
+
+## 0. SSH Config (from your Mac)
+
+Add this to `~/.ssh/config` on your Mac so scripts and tunnel commands work:
+
+```
+Host your-server
+    HostName YOUR.SERVER.IP
+    User claw
+    IdentityFile ~/.ssh/id_ed25519
+```
+
+Replace `YOUR.SERVER.IP` with your droplet's IP address. Then:
+
+```bash
+ssh your-server   # should connect without a password prompt
+```
 
 ## 1. Clone Repository
 
 ```bash
-git clone https://github.com/jbellsolutions/single-brain.git /srv/single-brain
+git clone https://github.com/YOUR_USERNAME/single-brain.git /srv/single-brain
 cd /srv/single-brain
 ```
 
@@ -27,25 +44,39 @@ Required values:
 - `OPENCLAW_GATEWAY_TOKEN` — generate with `openssl rand -hex 32`
 - `OPENCLAW_OPENROUTER_API_KEY` — key #1 from OpenRouter
 - `HERMES_OPENROUTER_API_KEY` — key #2 from OpenRouter
-- Telegram and Slack IDs
+- `TELEGRAM_USER_ID` — your numeric Telegram user ID (not the bot ID)
+- `SLACK_TEAM_ID` — workspace team ID (starts with `T`)
+- `SLACK_USER_ID` — your user ID in Slack (starts with `U`)
 
-## 3. Initialize Vault
+## 3. Configure OpenClaw
 
 ```bash
+cp openclaw/openclaw.example.json openclaw/config/openclaw.json
+nano openclaw/config/openclaw.json
+```
+
+Fill in your actual bot tokens where marked `YOUR_SLACK_BOT_TOKEN`, `YOUR_SLACK_APP_TOKEN`, and `YOUR_TELEGRAM_BOT_TOKEN`. This file is gitignored — it will never be committed.
+
+## 4. Initialize Vault
+
+```bash
+mkdir -p /srv/single-brain/vault
 cd /srv/single-brain/vault
 git init
+# Optional: copy vault-skeleton/ files as starting point
+cp -r /srv/single-brain/vault-skeleton/. /srv/single-brain/vault/
 git add .
 git commit -m "init: vault structure"
 ```
 
-## 4. Start Stack
+## 5. Start Stack
 
 ```bash
 cd /srv/single-brain
 docker compose up -d
 ```
 
-OpenClaw takes up to 3 minutes to become `healthy` (start_period: 180s).
+OpenClaw takes **up to 7 minutes** to become `healthy` (start_period: 420s — covers Slack Socket Mode cold-connect time).
 
 Check status:
 ```bash
@@ -53,9 +84,9 @@ docker compose ps
 docker compose logs -f openclaw-gateway
 ```
 
-## 5. Pair Slack User
+## 6. Pair Slack User
 
-On first message from a new Slack user, OpenClaw will ask for pairing approval. To pre-approve:
+On first message from a new Slack user, OpenClaw will ask for pairing approval. To pre-approve your user ID:
 
 ```bash
 docker exec -it openclaw-gateway node -e "
@@ -71,20 +102,22 @@ if (!data.allowFrom.includes('YOUR_SLACK_USER_ID')) {
 "
 ```
 
-## 6. Install Watchdog
+Replace `YOUR_SLACK_USER_ID` with your actual Slack user ID (e.g. `U01XXXXXXXX`).
+
+## 7. Install Watchdog
 
 ```bash
 crontab -e
 # Add: * * * * * /srv/single-brain/bin/watchdog.sh
 ```
 
-## 7. Enable Docker on Boot
+## 8. Enable Docker on Boot
 
 ```bash
 sudo systemctl enable docker
 ```
 
-## 8. Verify
+## 9. Verify
 
 ```bash
 # All containers healthy
@@ -101,7 +134,7 @@ crontab -l | grep watchdog
 
 From your Mac:
 ```bash
-ssh -L 18789:127.0.0.1:18789 single-brain -N &
+ssh -L 18789:127.0.0.1:18789 your-server -N &
 open http://localhost:18789
 ```
 
