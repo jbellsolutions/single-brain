@@ -41,3 +41,7 @@ AGI-1 is the self-healing, self-learning layer across all repos and agents. Ever
 1. Add path to REPO_PATHS in agi1_sync.py
 2. Scaffold `.agi1/` directory (copy templates from agi-1 repo)
 3. Next sync auto-discovers data
+
+
+---
+Tags: [[sop]] [[agi-1]] [[healing]] [[learning]] [[genome]]

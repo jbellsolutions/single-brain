@@ -22,3 +22,7 @@
 ## Latest Report
 
 See [[daily-report-2026-05-02]]
+
+
+---
+Tags: [[agi-1]] [[genome]] [[dashboard]]

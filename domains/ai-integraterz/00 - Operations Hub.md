@@ -35,3 +35,7 @@
 - Cold Email Repo: `ai-integraterz-cold-email`
 - Flywheel Repo: `ai-guy-flywheel`
 - Notion Ops Hub: `3493fa00-4c9d-8105-8a4e-ccdb8f4700c9`
+
+
+---
+Tags: [[ai-integraterz]] [[operations]] [[architecture]]

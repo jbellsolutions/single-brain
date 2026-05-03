@@ -45,3 +45,7 @@ req = urllib.request.Request(
 - Nice to have: title, LinkedIn URL, phone
 - Reject: generic emails (info@, contact@, hello@)
 - Reject: known bad domains (temporary email services)
+
+
+---
+Tags: [[sop]] [[apify]] [[leads]] [[scraping]]

@@ -36,3 +36,7 @@
 - Railway = Content Flywheel engine
 - VPS = automation backbone
 - Obsidian vault = shared brain between agents
+
+
+---
+Tags: [[decisions]] [[architecture]] [[ai-integraterz]]

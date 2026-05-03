@@ -278,3 +278,7 @@ Currently informal. Council critique flagged this as the lowest-scoring dimensio
 - slack_agent: median time to first response (target <12s)
 - watchdog: restarts/day (target 0; alert if >3)
 
+
+
+---
+Tags: [[ai-integraterz]] [[cold-email]] [[smartlead]] [[voice-rules]] [[squads]]

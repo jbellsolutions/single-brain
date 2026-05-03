@@ -45,3 +45,7 @@ After every significant Telegram or Slack conversation:
 - Vault auto-commits every 30 minutes via cron
 - Git push to `jbellsolutions/single-brain` repo
 - Both Hermes and OpenClaw read from the same vault
+
+
+---
+Tags: [[sop]] [[vault]] [[logging]] [[protocol]]

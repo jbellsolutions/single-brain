@@ -32,3 +32,7 @@ Multi-agent squad system built on "forge" framework.
 4. Existing campaign re-processing
 
 See: [[00 - Operations Hub]]
+
+
+---
+Tags: [[ai-integraterz]] [[cold-email]] [[smartlead]] [[pipeline]]

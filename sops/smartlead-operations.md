@@ -39,3 +39,7 @@ smartlead leads list --campaign-id <ID>
 smartlead leads export --campaign-id <ID> --output leads.csv
 smartlead analytics overview --from YYYY-MM-DD --to YYYY-MM-DD
 ```
+
+
+---
+Tags: [[sop]] [[smartlead]] [[cold-email]] [[monitoring]]
