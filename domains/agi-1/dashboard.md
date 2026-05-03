@@ -1,6 +1,6 @@
 # AGI-1 Dashboard
 
-**Last Updated:** 2026-05-02 18:12 ET
+**Last Updated:** 2026-05-03 07:01 ET
 
 ## Current State
 
@@ -21,8 +21,4 @@
 
 ## Latest Report
 
-See [[daily-report-2026-05-02]]
-
-
----
-Tags: [[agi-1]] [[genome]] [[dashboard]]
+See [[daily-report-2026-05-03]]
