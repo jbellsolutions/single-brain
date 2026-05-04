@@ -1,53 +1,47 @@
 # Vault Knowledge Graph Analysis
 
-**Generated:** 2026-05-02 17:22 ET
+**Generated:** 2026-05-04 09:00 ET
 **Vault:** `/opt/data/obsidian-vault`
 
 ## Summary
 
-- **Documents analyzed:** 18
+- **Documents analyzed:** 82
 - **Unique concepts:** 100
-- **Connections:** 495
-- **Topic clusters:** 5
+- **Connections:** 892
+- **Topic clusters:** 3
 - **Structural gaps:** 0
-- **Bridge concepts:** 54
+- **Bridge concepts:** 45
 
 ## Most Influential Concepts (Betweenness Centrality)
 
 | Concept | Centrality | Frequency | Documents |
 |---|---|---|---|
-| email | 0.131 | 81 | 12 |
-| select | 0.090 | 55 | 1 |
-| date | 0.069 | 55 | 2 |
-| reply | 0.065 | 23 | 5 |
-| lead | 0.061 | 22 | 10 |
-| key | 0.056 | 28 | 7 |
-| smartlead | 0.051 | 47 | 11 |
-| agent | 0.044 | 23 | 8 |
-| campaigns | 0.042 | 26 | 10 |
-| campaign | 0.041 | 35 | 9 |
-| text | 0.041 | 55 | 2 |
-| rich | 0.039 | 55 | 2 |
-| leads | 0.038 | 25 | 11 |
-| cold | 0.037 | 42 | 11 |
-| operations | 0.037 | 18 | 9 |
+| tasks | 0.100 | 52 | 18 |
+| integraterz | 0.095 | 125 | 40 |
+| hermes | 0.074 | 124 | 36 |
+| vault | 0.071 | 196 | 34 |
+| status | 0.070 | 104 | 27 |
+| cold | 0.063 | 153 | 45 |
+| campaign | 0.047 | 132 | 30 |
+| tags | 0.039 | 44 | 38 |
+| smartlead | 0.038 | 178 | 36 |
+| brain | 0.036 | 61 | 28 |
+| voice | 0.035 | 58 | 28 |
+| agi | 0.034 | 89 | 20 |
+| notion | 0.033 | 174 | 41 |
+| campaigns | 0.032 | 90 | 34 |
+| text | 0.031 | 169 | 8 |
 
 ## Topic Clusters
 
-### Cluster 1 (31 concepts)
-**Top concepts:** select, date, campaign, text, rich, read, platform, brief
+### Cluster 1 (35 concepts)
+**Top concepts:** integraterz, cold, campaign, notion, text, operations, relation, brief
 
-### Cluster 2 (22 concepts)
-**Top concepts:** lead, key, smartlead, campaigns, leads, operations, data, retell
+### Cluster 2 (34 concepts)
+**Top concepts:** tasks, hermes, vault, status, brain, agi, new, telegram
 
-### Cluster 3 (19 concepts)
-**Top concepts:** agent, cold, hermes, agents, log, jbellsolutions, daily, vault
-
-### Cluster 4 (15 concepts)
-**Top concepts:** justin, drafted, capstone, active, power, voice, info, operator
-
-### Cluster 5 (13 concepts)
-**Top concepts:** email, reply, emails, target, replies, checkbox, research, squad
+### Cluster 3 (31 concepts)
+**Top concepts:** tags, smartlead, voice, campaigns, operator, data, api, via
 
 ## 🌉 Bridge Concepts
 
@@ -55,16 +49,16 @@ These concepts connect different topic clusters — they're your most integrativ
 
 | Concept | Betweenness | Clusters Connected | Connections |
 |---|---|---|---|
-| email | 0.131 | 5 | 37 |
-| select | 0.090 | 5 | 28 |
-| date | 0.069 | 3 | 22 |
-| reply | 0.065 | 5 | 14 |
-| lead | 0.061 | 4 | 13 |
-| key | 0.056 | 4 | 16 |
-| smartlead | 0.051 | 5 | 27 |
-| agent | 0.044 | 4 | 15 |
-| campaigns | 0.042 | 5 | 18 |
-| campaign | 0.041 | 4 | 19 |
+| tasks | 0.100 | 3 | 22 |
+| integraterz | 0.095 | 3 | 34 |
+| hermes | 0.074 | 3 | 32 |
+| vault | 0.071 | 3 | 38 |
+| status | 0.070 | 3 | 29 |
+| cold | 0.063 | 3 | 35 |
+| campaign | 0.047 | 3 | 38 |
+| tags | 0.039 | 3 | 24 |
+| smartlead | 0.038 | 3 | 44 |
+| brain | 0.036 | 3 | 14 |
 
 ## 🏝️ Orphan Topics (Single-Document Concepts)
 
@@ -72,33 +66,24 @@ These concepts only appear in one document — consider cross-referencing them.
 
 | Concept | Frequency | Only In |
 |---|---|---|
-| select | 55 | domains/ai-integraterz/notion-schema.md |
-| relation | 33 | domains/ai-integraterz/notion-schema.md |
-| details | 26 | domains/ai-integraterz/notion-schema.md |
-| com | 15 | domains/ai-integraterz/smartlead-state.md |
-| rollup | 14 | domains/ai-integraterz/notion-schema.md |
-| tenxva | 13 | domains/ai-integraterz/smartlead-state.md |
-| client | 12 | domains/ai-integraterz/notion-schema.md |
-| week | 12 | domains/ai-integraterz/notion-schema.md |
-| unique | 11 | domains/ai-integraterz/notion-schema.md |
-| free | 11 | domains/ai-integraterz/cold-email-architecture.md |
-| formula | 10 | domains/ai-integraterz/notion-schema.md |
-| checkbox | 9 | domains/ai-integraterz/notion-schema.md |
-| dollar | 8 | domains/ai-integraterz/notion-schema.md |
-| f52411c6 | 8 | domains/ai-integraterz/notion-schema.md |
-| percent | 8 | domains/ai-integraterz/notion-schema.md |
+| composio | 14 | docs/composio.md |
+| unhealthy | 6 | docs/changelog.md |
+| pid | 5 | daily-logs/2026-05-03.md |
+| cause | 5 | docs/changelog.md |
+| reaction | 4 | docs/channels.md |
+| application | 3 | projects/speaker-agent/specs/AGENTS-template.md |
+| pick | 3 | projects/speaker-agent/specs/AGENTS-template.md |
+| tests | 3 | projects/speaker-agent/specs/AGENTS-template.md |
+| mac | 3 | docs/setup.md |
+| apps | 3 | docs/composio.md |
 
 ## 💡 Suggestions
 
 ### Concepts to Cross-Reference
 
-- **select** (in `domains/ai-integraterz/notion-schema.md`) — mention this in at least one other document
-- **relation** (in `domains/ai-integraterz/notion-schema.md`) — mention this in at least one other document
-- **details** (in `domains/ai-integraterz/notion-schema.md`) — mention this in at least one other document
-- **com** (in `domains/ai-integraterz/smartlead-state.md`) — mention this in at least one other document
-- **rollup** (in `domains/ai-integraterz/notion-schema.md`) — mention this in at least one other document
+- **composio** (in `docs/composio.md`) — mention this in at least one other document
+- **unhealthy** (in `docs/changelog.md`) — mention this in at least one other document
+- **pid** (in `daily-logs/2026-05-03.md`) — mention this in at least one other document
+- **cause** (in `docs/changelog.md`) — mention this in at least one other document
+- **reaction** (in `docs/channels.md`) — mention this in at least one other document
 
-
-
----
-Tags: [[knowledge-graph]] [[vault-health]] [[analysis]]
