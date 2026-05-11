@@ -1,47 +1,47 @@
 # Vault Knowledge Graph Analysis
 
-**Generated:** 2026-05-04 09:00 ET
+**Generated:** 2026-05-11 09:00 ET
 **Vault:** `/opt/data/obsidian-vault`
 
 ## Summary
 
-- **Documents analyzed:** 82
+- **Documents analyzed:** 102
 - **Unique concepts:** 100
-- **Connections:** 892
+- **Connections:** 995
 - **Topic clusters:** 3
 - **Structural gaps:** 0
-- **Bridge concepts:** 45
+- **Bridge concepts:** 42
 
 ## Most Influential Concepts (Betweenness Centrality)
 
 | Concept | Centrality | Frequency | Documents |
 |---|---|---|---|
-| tasks | 0.100 | 52 | 18 |
-| integraterz | 0.095 | 125 | 40 |
-| hermes | 0.074 | 124 | 36 |
-| vault | 0.071 | 196 | 34 |
-| status | 0.070 | 104 | 27 |
-| cold | 0.063 | 153 | 45 |
-| campaign | 0.047 | 132 | 30 |
-| tags | 0.039 | 44 | 38 |
-| smartlead | 0.038 | 178 | 36 |
-| brain | 0.036 | 61 | 28 |
-| voice | 0.035 | 58 | 28 |
-| agi | 0.034 | 89 | 20 |
-| notion | 0.033 | 174 | 41 |
-| campaigns | 0.032 | 90 | 34 |
-| text | 0.031 | 169 | 8 |
+| integraterz | 0.115 | 111 | 47 |
+| cold | 0.093 | 167 | 50 |
+| tasks | 0.063 | 56 | 20 |
+| operator | 0.059 | 94 | 26 |
+| campaign | 0.056 | 157 | 36 |
+| agi | 0.052 | 105 | 34 |
+| leads | 0.050 | 102 | 43 |
+| data | 0.049 | 106 | 37 |
+| status | 0.041 | 125 | 36 |
+| agent | 0.039 | 180 | 52 |
+| telegram | 0.035 | 51 | 30 |
+| hermes | 0.035 | 122 | 36 |
+| day | 0.029 | 49 | 15 |
+| single | 0.029 | 60 | 41 |
+| today | 0.027 | 50 | 29 |
 
 ## Topic Clusters
 
-### Cluster 1 (35 concepts)
-**Top concepts:** integraterz, cold, campaign, notion, text, operations, relation, brief
+### Cluster 1 (42 concepts)
+**Top concepts:** integraterz, cold, tasks, agi, data, agent, telegram, hermes
 
-### Cluster 2 (34 concepts)
-**Top concepts:** tasks, hermes, vault, status, brain, agi, new, telegram
+### Cluster 2 (37 concepts)
+**Top concepts:** operator, campaign, leads, day, today, new, open, email
 
-### Cluster 3 (31 concepts)
-**Top concepts:** tags, smartlead, voice, campaigns, operator, data, api, via
+### Cluster 3 (21 concepts)
+**Top concepts:** status, relation, text, slack, brief, source, rich, date
 
 ## 🌉 Bridge Concepts
 
@@ -49,16 +49,16 @@ These concepts connect different topic clusters — they're your most integrativ
 
 | Concept | Betweenness | Clusters Connected | Connections |
 |---|---|---|---|
-| tasks | 0.100 | 3 | 22 |
-| integraterz | 0.095 | 3 | 34 |
-| hermes | 0.074 | 3 | 32 |
-| vault | 0.071 | 3 | 38 |
-| status | 0.070 | 3 | 29 |
-| cold | 0.063 | 3 | 35 |
-| campaign | 0.047 | 3 | 38 |
-| tags | 0.039 | 3 | 24 |
-| smartlead | 0.038 | 3 | 44 |
-| brain | 0.036 | 3 | 14 |
+| integraterz | 0.115 | 3 | 33 |
+| cold | 0.093 | 3 | 39 |
+| tasks | 0.063 | 3 | 23 |
+| operator | 0.059 | 3 | 30 |
+| campaign | 0.056 | 3 | 44 |
+| agi | 0.052 | 3 | 30 |
+| leads | 0.050 | 3 | 36 |
+| data | 0.049 | 3 | 30 |
+| status | 0.041 | 3 | 39 |
+| agent | 0.039 | 3 | 36 |
 
 ## 🏝️ Orphan Topics (Single-Document Concepts)
 
@@ -66,24 +66,21 @@ These concepts only appear in one document — consider cross-referencing them.
 
 | Concept | Frequency | Only In |
 |---|---|---|
-| composio | 14 | docs/composio.md |
-| unhealthy | 6 | docs/changelog.md |
-| pid | 5 | daily-logs/2026-05-03.md |
-| cause | 5 | docs/changelog.md |
-| reaction | 4 | docs/channels.md |
-| application | 3 | projects/speaker-agent/specs/AGENTS-template.md |
-| pick | 3 | projects/speaker-agent/specs/AGENTS-template.md |
-| tests | 3 | projects/speaker-agent/specs/AGENTS-template.md |
-| mac | 3 | docs/setup.md |
-| apps | 3 | docs/composio.md |
+| monkeybrass | 10 | domains/cold-email/audits/deliverability-2026-05-04.md |
+| quarantine | 6 | domains/cold-email/audits/deliverability-2026-05-04.md |
+| wired | 5 | daily-logs/2026-05-03.md |
+| organic | 4 | daily-logs/2026-05-06.md |
+| valmuc | 3 | daily-logs/2026-05-11.md |
+| timvoi | 3 | daily-logs/2026-05-11.md |
+| mirvoes | 3 | daily-logs/2026-05-11.md |
 
 ## 💡 Suggestions
 
 ### Concepts to Cross-Reference
 
-- **composio** (in `docs/composio.md`) — mention this in at least one other document
-- **unhealthy** (in `docs/changelog.md`) — mention this in at least one other document
-- **pid** (in `daily-logs/2026-05-03.md`) — mention this in at least one other document
-- **cause** (in `docs/changelog.md`) — mention this in at least one other document
-- **reaction** (in `docs/channels.md`) — mention this in at least one other document
+- **monkeybrass** (in `domains/cold-email/audits/deliverability-2026-05-04.md`) — mention this in at least one other document
+- **quarantine** (in `domains/cold-email/audits/deliverability-2026-05-04.md`) — mention this in at least one other document
+- **wired** (in `daily-logs/2026-05-03.md`) — mention this in at least one other document
+- **organic** (in `daily-logs/2026-05-06.md`) — mention this in at least one other document
+- **valmuc** (in `daily-logs/2026-05-11.md`) — mention this in at least one other document
 
