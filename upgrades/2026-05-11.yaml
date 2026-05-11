@@ -1,0 +1,34 @@
+date: '2026-05-11'
+results:
+  hermes:
+    status: skip
+    reason: submodule vendor/hermes-agent not initialized
+  openclaw:
+    status: skip
+    reason: submodule vendor/openclaw not initialized
+  openswarm:
+    status: skip
+    reason: submodule vendor/openswarm not initialized
+  browser_use:
+    status: skip
+    reason: submodule vendor/browser-use not initialized
+  aider:
+    status: skip
+    reason: submodule vendor/aider not initialized
+  codex:
+    status: skip
+    reason: codex CLI not installed
+  agi1:
+    status: skip
+    reason: submodule vendor/agi-1 not initialized
+  awesome_hermes:
+    status: skip
+    reason: submodule vendor/awesome-hermes-agent not initialized
+  nemoclaw:
+    status: parked
+    reason: NemoClaw preview; flip UPGRADER_ENABLE_NEMOCLAW=true when GA
+  mcp_registry:
+    status: stub
+    todo: wire MCP registry walk
+  vendor_health:
+    status: no-vendor
