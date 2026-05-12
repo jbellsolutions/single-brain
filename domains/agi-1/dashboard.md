@@ -1,6 +1,6 @@
 # AGI-1 Dashboard
 
-**Last Updated:** 2026-05-11 07:00 ET
+**Last Updated:** 2026-05-12 07:00 ET
 
 ## Current State
 
@@ -21,4 +21,4 @@
 
 ## Latest Report
 
-See [[daily-report-2026-05-11]]
+See [[daily-report-2026-05-12]]
